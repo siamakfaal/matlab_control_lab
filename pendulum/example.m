@@ -18,14 +18,14 @@ kp = 50;
 ki = 10;
 kd = 5;
 
-lower_bound = -25;
-upper_bound = 25;
+lower_bound = -5;
+upper_bound = 5;
 
 %% Controller design
-% u = design_linear_controller(p, xd, [-2, -1]);
-% u = design_energy_controller(p, xd, ke);
+u = linear_controller(p, xd, [-2, -1]);
+% u = energy_controller(p, xd, ke);
 % u = hybrid_energy_pd_controller(p, xd, ke, roots, epsilon);
-u = pid_controller(xd, kp, ki, kd);
+% u = pid_controller(xd, kp, ki, kd);
 
 
 %% Simulation
