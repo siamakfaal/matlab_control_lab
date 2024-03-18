@@ -2,11 +2,6 @@
 
 This repository contains MATLAB files for drawing phase portraits of dynamical systems with two dimensional state space. The main functionality is encapsulated in the `portrait` class, which allows for the visualization of trajectories in a system's phase space.
 
-## Files
-
-- `portrait.m`: The MATLAB class providing the core functionality for drawing phase portraits.
-- `example_01.m`: An example script demonstrating how to use the `portrait` class to visualize a dynamical system.
-
 ## Features
 
 The `portrait` class offers several functionalities and properties for customizing the appearance of phase portraits:
