@@ -1,4 +1,4 @@
-# Phase Portrait Drawer
+# Phase Portrait Illustrator
 
 This repository contains MATLAB files for drawing phase portraits of dynamical systems with two dimensional state space. The main functionality is encapsulated in the `portrait` class, which allows for the visualization of trajectories in a system's phase space.
 
