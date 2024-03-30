@@ -99,10 +99,10 @@ classdef portrait < handle
 
     properties(Access=public)
         quiver_color_map = abyss;
-        trajectory_color = [0, 0.447, 0.741];
         quiver_line_width = 2;
         quiver_arrow_scale = 0.1;
         quiver_max_headsize = 1;
+        trajectory_color = [0, 0.447, 0.741];
         trajectory_line_width = 1;
         label_font_size = 25;
     end
@@ -202,20 +202,27 @@ classdef portrait < handle
             end
         end
 
-        function ax = trajectories(obj, f, x0, tspan, ax)
+        function [ax, traj] = trajectories(obj, f, x0, tspan, ax)
             if nargin < 5
                 ax = obj.buildaxes();
             end
+            
             options = odeset(RelTol=1e-6, ...
                 Events=@(t,x)obj.outofbound(t, x));
 
-            x0 = reshape(x0,[length(x0),2]);
+            if length(x0) > 2
+                x0 = reshape(x0,[length(x0),2]);
+            end
 
             for i = 1:size(x0,1)
-                [~, x] = ode45(f,tspan,x0(i,:)', options);
+                [t, x] = ode45(f,tspan,x0(i,:)', options);
                 plot(ax, x(:,1), x(:,2), ...
                     Color=obj.trajectory_color,...
                     LineWidth=obj.trajectory_line_width);
+            
+                if nargout > 1
+                    traj(i) = struct('t',t,'x',x);
+                end
             end
         end
 
@@ -223,7 +230,9 @@ classdef portrait < handle
             if nargin < 4
                 ax = obj.buildaxes();
             end
-            x0 = reshape(x0,[length(x0),2]);
+            if length(x0) > 2
+                x0 = reshape(x0,[length(x0),2]);
+            end
 
             norm_dx = zeros(length(x0),1);
             dx = zeros(size(x0));
@@ -236,18 +245,23 @@ classdef portrait < handle
             end
             max_norm = max(max(norm_dx));
             for i = 1:size(x0,1)
-                quiver(ax, x0(i,1), x0(i,2), dx(i,1), dx(i,2), 0.2,...
+                quiver(ax, x0(i,1), x0(i,2), dx(i,1), dx(i,2), ...
+                    obj.quiver_arrow_scale,...
                     Color=interp1(cindex, obj.quiver_color_map, norm_dx(i)/max_norm),...
                     LineWidth=obj.quiver_line_width, ...
                     MaxHeadSize=obj.quiver_max_headsize);
             end
         end
 
-        function ax = draw(obj,f,x0,tspan,ax)
+        function [ax, traj] = draw(obj,f,x0,tspan,ax)
             if nargin < 5
                 ax = obj.buildaxes();
             end
-            obj.trajectories(f,x0,tspan,ax);
+            if nargout > 1
+                [~, traj] = obj.trajectories(f,x0,tspan,ax);
+            else
+                obj.trajectories(f,x0,tspan,ax);
+            end
             obj.directions(f,x0,ax);
         end
 
@@ -286,7 +300,7 @@ classdef portrait < handle
             x1_limit = [-0.2, 0.2] + [obj.canvas.x1.min, obj.canvas.x1.max];
             x2_limit = [-0.2, 0.2] + [obj.canvas.x2.min, obj.canvas.x2.max];
             position = (x1_limit(1) < x(1) & x(1) < x1_limit(2) & ...
-                x2_limit(1) < x(2) & x(2) < x1_limit(2));
+                x2_limit(1) < x(2) & x(2) < x2_limit(2));
             isterminal = 1; % Halt integration
             direction = 0; % The zero can be approached from either side
         end
