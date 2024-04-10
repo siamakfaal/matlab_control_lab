@@ -21,7 +21,12 @@ $$
 m g l \ddot{\theta} = m g l \sin(\theta) + u
 $$
 
-Let \( x_1 = \theta \) represents the pendulum angle where \(x_1 = 0\) corresponds to the upward configuration and measured counter clockwise, according to the right hand rule. \( x_2 = \dot{\theta} \) denotes the angular velocity. Assuming \(m=l=g=1\), the state space representation of the system is
+Let 
+
+\( x_1 = \theta \) 
+
+represents the pendulum angle where \(x_1 = 0\) corresponds to the upward configuration and measured counter clockwise, according to the right hand rule. \( x_2 = \dot{\theta} \) denotes the angular velocity. Assuming \(m=l=g=1\), the state space representation of the system is
+
 $$
 \begin{aligned}
     \dot{x}_1 &= x_2,\\
