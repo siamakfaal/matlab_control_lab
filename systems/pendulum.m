@@ -40,6 +40,11 @@ classdef  pendulum < handle & basemodel
         function dx = closedloop(obj,~,x)
             dx = obj.openloop([],x,0);
         end
+
+        function E = energy(obj,x)
+            tmp = obj.m*obj.l;
+            E = (tmp*obj.l*x(2)^2)/2 + tmp*obj.g*cos(x(1));
+        end
     end
 
     methods(Access=public)
