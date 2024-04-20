@@ -1,14 +1,8 @@
 classdef simulator < handle & basemodel
-
-    %-- Properties --------------------------------------------------------
     properties(Access=public)
         model;
     end
 
-    properties(Access=private)
-    end
-
-    %-- Methods -----------------------------------------------------------
     methods(Access=public) % Constructors
         function obj = simulator(varargin)
             obj.parse_constructor_inputs(varargin{:});
@@ -28,7 +22,6 @@ classdef simulator < handle & basemodel
                 end
             end
         end
-
     end
 
     methods(Access=public)
@@ -89,14 +82,12 @@ classdef simulator < handle & basemodel
             if nargin < 3
                 ax = obj.model.animation_axis;
             end
-            tic;
-            k = 1;
-            while k <= length(sol.t)
-                ax = obj.model.draw(sol.x(k,:), ax);
+            ax = obj.model.draw(sol.x(1,:), ax);
+            k = 2;
+            tic
+            while k <= length(sol.t) && isvalid(ax)
+                obj.model.draw(sol.x(k,:), ax);
                 pause(sol.t(k)-toc);
-                if ~isvalid(ax)
-                    return
-                end
                 k = k + 1;
             end
         end
