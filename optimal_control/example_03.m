@@ -1,4 +1,5 @@
 clc; clear; close all;
+addpath('../systems');
 
 robot = cartpole();
 

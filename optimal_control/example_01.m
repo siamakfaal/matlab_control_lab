@@ -1,20 +1,21 @@
 clc; clear; close all;
+addpath('../systems');
 
 robot = satellite2d();
 
 sim = simulator(model=robot);
 
-x0 = [0; pi];
+x0 = [pi; 0];
 xd = [0; 0];
 
-h = @(t,x) norm(x-xd);
+h = @(t,x) 0;
 g = @(t,x,u) norm(x - xd);
 f = @(t,x,u) robot.openloop(t,x,u);
 
 solver = ocs(2, 1, f, h, g);
 
 u0 = 0;
-tspan = linspace(0,5,50);
+tspan = linspace(0,2,50);
 
 options = optimoptions("fmincon", ...
                 Algorithm="sqp",...
