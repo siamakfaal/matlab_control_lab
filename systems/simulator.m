@@ -78,6 +78,13 @@ classdef simulator < handle & basemodel
             obj.set_plot_axes_properties(ax);
         end
 
+        function ax = animationaxes(obj,ax)
+            if nargin < 2
+                ax = axes(Parent=figure);
+            end
+            obj.set_animation_axes_properties(ax);
+        end
+
         function animate(obj, sol, ax)
             if nargin < 3
                 ax = obj.model.animation_axis;
