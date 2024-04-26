@@ -21,7 +21,7 @@ Contains examples that demonstrate control methods aimed at managing energy effi
 ### [optimal_control](https://github.com/siamakfaal/control_examples/tree/main/optimal_control)
 Features examples and tutorials on optimal control techniques, focusing on optimizing performance criteria.
 
-### [shooting_method](https://github.com/siamakfaal/control_examples/tree/main/optimal_control)
+### [shooting_method](https://github.com/siamakfaal/control_examples/tree/main/shooting_method)
 Features examples and tutorials on optimal control techniques, focusing on shooting methods in solving boundary value porblems.
 
 ### [systems](https://github.com/siamakfaal/control_examples/tree/main/systems)

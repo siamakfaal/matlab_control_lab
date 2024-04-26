@@ -12,7 +12,6 @@ p(1,:) = [-l1*sin(q(1)), l1*cos(q(1))];
 p(2,:) = p(1,:) + [l2*cos(q(1)+q(2)), l2*sin(q(1)+q(2))];
 p(3,:) = p(1,:) - [l2*cos(q(1)+q(2)), l2*sin(q(1)+q(2))];
 
-
 V = 0; U = 0;
 for i = 1:3
     dp = jacobian(p(i,:)',q)*dq;
@@ -26,12 +25,12 @@ M = simplify(jacobian(dV,dq));
 Phi = simplify(jacobian(dV,q)*dq - gradient(V,q) + gradient(U,q));
 T = [0; 1];
 
-
-syms a b c 'positive'
+syms a b 'positive'
+% a = (m1 + 2*m2)*l1^2
+% b = m2*l2^2
 
 M = subs(M, [m1*l1^2 + 2*m2*l1^2, m2*l2^2], [a, b]);
 Phi = subs(Phi, l1*(m1 + 2*m2), a/l1);
-
 
 x = [q; dq];
 xeq = zeros(4,1);
@@ -49,7 +48,4 @@ for k = 1:length(p)
     phi = phi + p(k)*A^(k - 1);
 end
 
-
 K = [0 0 0 1]*(Ctrb\phi);
-
-
