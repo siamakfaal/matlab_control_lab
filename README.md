@@ -5,6 +5,8 @@ This repository serves as a collection of examples in control theory, particular
 Feel free to explore these examples and use them as a basis for developing deeper understanding and skills in control systems engineering.
 
 ## Folders:
+### [documents](https://github.com/siamakfaal/control_examples/tree/main/documents)
+Contains related documents including lecture notes.
 
 ### [phase_portraits](https://github.com/siamakfaal/control_examples/tree/main/phase_portraits)
 Contains MATLAB scripts for generating phase portraits, useful for visualizing system behaviors over time.
