@@ -23,12 +23,6 @@ classdef basemodel < handle
         features = {};
     end
 
-
-    methods(Access=public)
-        function obj = basemodel()
-        end
-    end
-
     methods(Access=public)
         function parse_constructor_inputs(obj, varargin)
             for i = 1:2:length(varargin)-1
