@@ -1,4 +1,5 @@
 clc; clear; close all;
+addpath src/
 
 b = 0.1;
 g = 9.81;

@@ -1,4 +1,5 @@
 clc; clear; close all;
+addpath src/
 
 robot = cartpole();
 sim = simulator(model=robot);
