@@ -9,7 +9,7 @@ sim = simulator(model=model);
 
 x0 = [3/4*pi; 0];
 
-ctrl = @(t,x) -[25, 5]*x;
+ctrl = @(t,x) -[25, 5]*(x - [0.5;0]);
 
 sol = sim.solve(0:0.05:5,x0,ctrl);
 

@@ -52,8 +52,6 @@ classdef simulator < handle
         %     obj.set_legend_properties(legend(ax), xlabel(ax, "$t$"));
         % end
 
-        
-
         function ax = make_plot_axes(obj,ax)
             if nargin < 2, ax = axes(Parent=figure); end
             obj.set_axes_properties(ax);
@@ -66,7 +64,6 @@ classdef simulator < handle
             set(ax, DataAspectRatio = [1, 1, 1], ...
                 Xlim = xlim, Ylim = ylim, Zlim = zlim, XTick=0, YTick=0);
         end
-
 
         function animate(obj, sol, ax)
             if nargin < 3, ax = obj.animationAxis; end
@@ -94,7 +91,6 @@ classdef simulator < handle
             end
         end
     end
-
 
     methods(Static)
         function z = eval(f, sol)
