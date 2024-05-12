@@ -2,12 +2,10 @@ clc; clear; close all;
 
 % Initial guess for the parameters to be shot
 x0 = [-1;0];
-tspan = 0:0.01:2;
+tspan = 0:0.01:3;
 w = [-2, 2];
 ti = linspace(tspan(1), tspan(end), 3)';
 ui = randi(w, size(ti));
-
-
 
 % % Use fsolve to adjust control
 % ui = fsolve(@(ui)shooting(x0, tspan, ti, ui), ui);
@@ -34,14 +32,14 @@ ui = fmincon(@(ui)shooting(x0, tspan, ti, ui), ...
 [t, x] = ode45(@(t,x)dynamics(t, x, control(t, ti, ui)), tspan, x0);
 
 % Plot results
-plot(t, x,'-*'); % Adjust depending on what you're interested in
+plot(t, x,'-');
 title('Solution of BVP using the shooting method');
 xlabel('t');
 
 
 function res = shooting(x0, tspan, ti, ui)
     [~, x] = ode45(@(t,x)dynamics(t, x, control(t, ti, ui)), tspan, x0);
-    res = norm(x(end,:));
+    res = norm(x(end,:) - [1,-1]);
 end
 
 function dx = dynamics(t, x, u)
