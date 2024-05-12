@@ -3,7 +3,7 @@ clc; clear; close all;
 model = rrarm();
 sim = simulator(model=model);
 
-u_fl = @(t,x,v) model.M(x)*v(t,x) + model.C(x)*x(3:4) + model.G(x);
+u_fl = @(t,x,v) model.M(t,x)*v(t,x) + model.h(t,x);
 
 qd = [pi/4; pi/4];
 
