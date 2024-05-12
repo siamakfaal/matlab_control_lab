@@ -1,3 +1,4 @@
+![Example Models](/systems/src/models.png "Example Models")
 
 # Systems
 
@@ -25,11 +26,11 @@ All dynamic models inherit from the `basemodel` class and implement several meth
 - `h(obj, t, x)`: Returns a vector of non-conservative forces acting on the system
 - `B(obj, t, x)`: Provides the input matrix, which maps control inputs to their effects on the system states.
 
-Given \({\bf q}\) as the vector of the generalized coordinates of the system and \({\bf u}\) as the vector of inputs to the system, The open loop dynamics of the system is
+Given ${\bf q}$ as the vector of the generalized coordinates of the system and ${\bf u}$ as the vector of inputs to the system, The open loop dynamics of the system is
 
-\[
-\ddot{\bf q = M}^{-1}\left( {\bf B\, u - h} \right).
-\]
+$$
+\ddot{\bf q} = {\bf M}^{-1}\left( {\bf B}\ {\bf  u} - {\bf h} \right).
+$$
 
 ## Simulator
 
