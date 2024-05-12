@@ -1,7 +1,7 @@
 
 # Systems
 
-This `systems` module contains a collection of dynamic models used that are used in the orher directories and modules to demonstrate various control systems. The library of the included modules is work in progress. Rge module also includes an abstract base class `basemodel.m` to allow development of custom models. Please see `src` directory for the implementations and further details.
+This systems module contains a collection of dynamic models used across various directories to demonstrate control systems. The library of the included modules is work in progress. The module also includes an abstract base class `basemodel.m` to allow development of custom models. Please see the src directory for the implementations and further details.
 
 ## Available Models
 
@@ -18,12 +18,12 @@ Each model is defined in its own MATLAB class file within the `/systems` directo
 
 All dynamic models inherit from the `basemodel` class and implement several methods that define their dynamics and behavior:
 
-- `openloop(obj, t, x, u)`: Defines the open-loop dynamics of the model.
-- `closedloop(obj, t, x)`: Specifies the closed-loop dynamics.
-- `energy(obj, t, x)`: Calculates the total energy of the system.
-- `M(obj, t, x)`: Returns the mass matrix of the system.
-- `h(obj, t, x)`: Provides a vector of non-conservative forces.
-- `B(obj, t, x)`: Returns the input matrix.
+- `openloop(obj, t, x, u)`: Calculates the system's response to the input `u`.
+- `closedloop(obj, t, x)`: Evaluates the system's behavior when the input vector is zero, hence providing insights into its inherent dynamics.
+- `energy(obj, t, x)`: Estimates the total energy of the system at any given state and time.
+- `M(obj, t, x)`: Generates the mass matrix of the system.
+- `h(obj, t, x)`: Returns a vector of non-conservative forces acting on the system
+- `B(obj, t, x)`: Provides the input matrix, which maps control inputs to their effects on the system states.
 
 Given \({\bf q}\) as the vector of the generalized coordinates of the system and \({\bf u}\) as the vector of inputs to the system, The open loop dynamics of the system is
 
