@@ -13,7 +13,8 @@ The repository includes several example models, each encapsulated in its class t
 - **Cartpole**: A model of a cart with a pole, which serves as a simple example of under-actuated system.
 - **RRArm**: A model of a plannar RR robot arm (double-pendulum system)
 
-Each model is defined in its own MATLAB class file within the `/systems` directory of this repository. See for state and parameter definitions.
+Each model is defined in its own MATLAB class file within the `/systems` directory of this repository. See 
+[State and Parameter Definitions](https://github.com/siamakfaal/control_examples/edit/main/systems/README.md#state-and-parameter-definitions) for details.
 
 ## Model Methods
 
@@ -81,26 +82,35 @@ The repository includes examples that demonstrate how to use each model and show
 
 #### State Vector
 The state vector of the system, $\mathbf{x}$, is defined as:
+
 $$
-\mathbf{x} = \begin{bmatrix} q \\ \dot{q} \end{bmatrix},
+\mathbf{x} = \left[\begin{array}{c} q \\
+\dot{q} \end{array}\right],
 $$
-where \( q \) represents the angle measured from the horizontal axis, moving counterclockwise.
+
+where $q$ represents the angle measured from the horizontal axis, moving counterclockwise.
 
 #### Equation of Motion
 The equation of motion for the system is given by:
+
 $$
 J \ddot{q} = u,
 $$
-where \( J \) is the moment of inertia, and \( u \) denotes the control input.
+
+where $J$ is the moment of inertia, and $u$ denotes the control input.
 
 #### State-Space Representation
 The state-space representation of the system can be expressed as:
-$$
-\begin{bmatrix} \dot{x}_1 \\ \dot{x}_2 \end{bmatrix} = \begin{bmatrix} x_2 \\ \frac{u}{J} \end{bmatrix},
-$$
-where \( \dot{x}_1 \) and \( \dot{x}_2 \) are the derivatives of the state variables, reflecting the system dynamics.
 
-![Satellite2d Model](/systems/src/images/satellite2d.png "Satellite2d Model")
+$$
+\begin{bmatrix} \dot{x}_1 \\
+\dot{x}_2 \end{bmatrix} = \begin{bmatrix} x_2 \\
+u/J \end{bmatrix},
+$$
+
+where $\dot{x}_1$ and $\dot{x}_2$ are the derivatives of the state variables.
+
+<img src="/systems/src/images/satellite2d.png" alt="Satellite2d Model" title="Satellite2d Model" width="30%">
 
 ## Note
 If you want to utilize the systems in other directories of this repository, make sure to add 
