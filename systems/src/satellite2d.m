@@ -1,6 +1,6 @@
 classdef  satellite2d < handle & basemodel
     properties(Access=public)
-        I double = 1; % Satellite inertia
+        J double = 1; % Satellite inertia
     end
 
     properties(Access=private)
@@ -17,12 +17,12 @@ classdef  satellite2d < handle & basemodel
             obj.set_visual_parameters();
         end
 
-        function dx = openloop(obj,~,x,u), dx = [x(2); u/obj.I]; end
+        function dx = openloop(obj,~,x,u), dx = [x(2); u/obj.J]; end
         function dx = closedloop(obj,~,x), dx = obj.openloop([],x,0); end
-        function E = energy(obj,~,x), E = obj.I*x(2)^2/2; end
-        function mass_matrix = M(obj,~,~), mass_matrix = obj.I; end
+        function E = energy(obj,~,x), E = obj.J*x(2)^2/2; end
+        function mass_matrix = M(obj,~,~), mass_matrix = obj.J; end
         function nonconservative = h(~,~,~), nonconservative = 0; end
-        function inputmatrix = B(obj,~,~), inputmatrix = 1/obj.I; end
+        function inputmatrix = B(obj,~,~), inputmatrix = 1/obj.J; end
 
         function pose = stick_diagram(obj,x)
             R = obj.rot2(x(1));
