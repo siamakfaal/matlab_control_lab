@@ -1,5 +1,5 @@
 clc; clear; close all;
-addpath('../systems');
+addpath('../systems/src');
 
 m = [1; 1]; % [cart mass, pole mass]
 l = 1;      % Pole lenght
@@ -11,7 +11,7 @@ robot = cartpole(m=m,l=l,I=I,c=c,g=g);
 
 xd = zeros(4,1);
 
-Ed = robot.energy(xd);
+Ed = robot.energy([], xd);
 
 ks = [2, 1];
 k = 1;
@@ -25,7 +25,7 @@ B = [0; 0; m(2)*c^2 + I; c*m(2)]/(m(1)*m(2)*c^2 + m(1)*I + m(2)*I);
 K = lqr(A,B,diag([20,5,1,1]),1);
 
 us = @(x) -K*x;
-ue = @(x) k*(robot.energy(x) - Ed)*x(3);
+ue = @(x) -k*(robot.energy([],x) - Ed)*x(3);
 in_omega = @(x) 1 - cos(x(1)) + x(2)^2 <= epsilon;
 
 
@@ -38,14 +38,10 @@ sol = sim.solve(0:0.1:20, x0, @(t,x)hybrid_control(x, w, us, ue, in_omega));
 sim.plot(sol);
 sim.animate(sol);
 
-ax = sim.plotaxes();
-E = zeros(size(sol.t));
-for k=1:length(E)
-    E(k) = robot.energy(sol.x(k,:)');
-end
-plot(ax, sol.t,E);
-xlabel(ax, "$t$", Interpreter="latex", FontSize=20);
-ylabel(ax, "$E(t)$", Interpreter="latex", FontSize=20);
+ax = sim.make_plot_axes;
+E = sim.eval(@robot.energy, sol);
+plot(ax, sol.t, E);
+sim.set_legend_properties(xlabel(ax, "$t$"), ylabel(ax, "$E(t)$"));
 
 function u = hybrid_control(x, w, us, ue, in_omega)
     if in_omega(x)

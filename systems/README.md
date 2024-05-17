@@ -1,4 +1,4 @@
-![Example Models](/systems/src/models.png "Example Models")
+![Example Models](/systems/src/images/models.png "Example Models")
 
 # Systems
 

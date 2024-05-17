@@ -1,6 +1,6 @@
 clc; clear; close all;
 
-addpath('../systems');
+addpath('../systems/src');
 
 model = pendulum(b=0, g=1);
 
@@ -12,12 +12,12 @@ w = 0.5;
 x0 = [3; 0];
 
 us = @(x) -ks*x;
-ue = @(x) -k*(model.energy(x) - 1)*sign(x(2));
+ue = @(x) -k*(model.energy([],x) - 1)*sign(x(2));
 in_omega = @(x) 1 - cos(x(1)) + x(2)^2 <= epsilon;
 
 
 sim = simulator(model=model);
-sol = sim.solve(0:0.05:40, x0, @(t,x) hybrid_control(x,w,us,ue,in_omega));
+sol = sim.solve(0:0.1:15, x0, @(t,x) hybrid_control(x,w,us,ue,in_omega));
 ax = sim.plot(sol);
 sim.animate(sol);
 

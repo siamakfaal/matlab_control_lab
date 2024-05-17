@@ -15,12 +15,12 @@ U = m2*g*p(2);
 dV = gradient(V,dq);
 
 M = simplify(jacobian(dV,dq));
-b = simplify(jacobian(dV,q)*dq - gradient(V,q));
+h = simplify(jacobian(dV,q)*dq - gradient(V,q));
 gr = simplify(gradient(U,q));
 
 % Equations of motion are: M*d2q + b + gr = [u; 0]
 
-f = [dq; M\([u; 0] - b - gr)];
+f = [dq; M\([u; 0] - h - gr)];
 
 A = subs(jacobian(f,[q;dq]), [q;dq;u],[0;0;0;0;0]);
 B = subs(jacobian(f,u), [q;dq;u],[0;0;0;0;0]);

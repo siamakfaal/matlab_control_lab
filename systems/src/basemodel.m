@@ -66,10 +66,15 @@ classdef basemodel < handle
         end
 
         function tf = isnewaxis(obj, ax)
-            if isempty(obj.shape_handles) 
+            if isempty(obj.shape_handles)
                 tf = true;
             else
-                tf = ax ~= ancestor(obj.shape_handles(1), 'axes');
+                curr_ax = ancestor(obj.shape_handles(1), 'axes');
+                if isempty(curr_ax)
+                    tf = true;
+                else
+                    tf = ax ~= ancestor(obj.shape_handles(1), 'axes');
+                end
             end
         end
 
