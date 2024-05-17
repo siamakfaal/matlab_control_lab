@@ -100,7 +100,7 @@ $$
 $$
 where \( \dot{x}_1 \) and \( \dot{x}_2 \) are the derivatives of the state variables, reflecting the system dynamics.
 
-![Example Models](/systems/src/images/satellite2d.png "Example Models")
+![Satellite2d Model](/systems/src/images/satellite2d.png "Satellite2d Model")
 
 ## Note
 If you want to utilize the systems in other directories of this repository, make sure to add 
