@@ -1,5 +1,5 @@
 clc; clear; close all;
-addpath src/
+addpath("src/");
 
 robot = satellite2d();
 sim = simulator(model=robot);

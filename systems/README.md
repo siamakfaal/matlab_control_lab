@@ -112,6 +112,42 @@ where $\dot{x}_1$ and $\dot{x}_2$ are the derivatives of the state variables.
 
 <img src="/systems/src/images/satellite2d.png" alt="Satellite2d Model" title="Satellite2d Model" width="30%">
 
+
+### Pendulum
+
+#### State Vector
+The state vector of the system, $\mathbf{x}$, is defined as:
+
+$$
+\mathbf{x} = \left[\begin{array}{c} q \\
+\dot{q} \end{array}\right],
+$$
+
+where $q$ represents the angle measured from the vertical axis, moving counterclockwise.
+
+#### Equation of Motion
+The equation of motion for the system is given by:
+
+$$
+m\,l^2 \ddot{q} + b\,\dot{q} = u + m\,g\,l\,\sin(q),
+$$
+
+where $m$ is the mass of the bob and $l$ is the lenght of the pendulum. $u$ denotes the control input.
+
+#### State-Space Representation
+The state-space representation of the system can be expressed as:
+
+$$
+\begin{bmatrix} \dot{x}_1 \\
+\dot{x}_2 \end{bmatrix} = \begin{bmatrix} x_2 \\
+\dfrac{1}{m\,l^2}\left(u + m\,g\,l\,\sin(q) - b\,x_2\right) \end{bmatrix},
+$$
+
+where $\dot{x}_1$ and $\dot{x}_2$ are the derivatives of the state variables.
+
+<img src="/systems/src/images/pendulum.png" alt="Pendulum Model" title="Pendulum Model" width="30%">
+
+
 ## Note
 If you want to utilize the systems in other directories of this repository, make sure to add 
 `addpath ../systems/src/`
