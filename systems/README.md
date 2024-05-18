@@ -129,10 +129,10 @@ where $q$ represents the angle measured from the vertical axis, moving countercl
 The equation of motion for the system is given by:
 
 $$
-m\,l^2 \ddot{q} + b\,\dot{q} = u + m\,g\,l\,\sin(q),
+m l^2 \ddot{q} + b \dot{q} = u + m g l \sin(q),
 $$
 
-where $m$ is the mass of the bob and $l$ is the lenght of the pendulum. $u$ denotes the control input.
+where $m$ is the mass of the bob and $l$ is the lenght of the pendulum, $b$ is the damping factor and $u$ denotes the control input.
 
 #### State-Space Representation
 The state-space representation of the system can be expressed as:
@@ -140,7 +140,7 @@ The state-space representation of the system can be expressed as:
 $$
 \begin{bmatrix} \dot{x}_1 \\
 \dot{x}_2 \end{bmatrix} = \begin{bmatrix} x_2 \\
-\dfrac{1}{m\,l^2}\left(u + m\,g\,l\,\sin(q) - b\,x_2\right) \end{bmatrix},
+\dfrac{u - b x_2}{m\,l^2}  + \dfrac{g}{l} \sin(q) \end{bmatrix},
 $$
 
 where $\dot{x}_1$ and $\dot{x}_2$ are the derivatives of the state variables.
