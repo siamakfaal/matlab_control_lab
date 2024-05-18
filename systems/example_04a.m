@@ -1,5 +1,5 @@
 clc; clear; close all;
-addpath src/
+addpath("src/");
 
 model = rrarm();
 sim = simulator(model=model);

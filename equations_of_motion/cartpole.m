@@ -1,7 +1,7 @@
 clc; clear all; close all; %#ok<CLALL>
 
 syms x theta dx dtheta d2x d2theta u 'real'
-syms m1 m2 I c g 'positive'
+syms m1 m2 J c g 'positive'
 
 q = [x; theta];
 dq = [dx; dtheta];
@@ -9,7 +9,7 @@ dq = [dx; dtheta];
 p = [x - c*sin(theta); c*cos(theta)];
 dp = jacobian(p,[x,theta])*[dx; dtheta];
 
-V = (m1*dx^2 + m2*(dp'*dp) + I*dtheta^2)/2;
+V = (m1*dx^2 + m2*(dp'*dp) + J*dtheta^2)/2;
 U = m2*g*p(2);
 
 dV = gradient(V,dq);

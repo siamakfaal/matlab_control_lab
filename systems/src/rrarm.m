@@ -2,7 +2,7 @@ classdef  rrarm < handle & basemodel
     properties(Access=public)
         m(2,1) double = [1; 1];
         l(2,1) double = [1; 1];
-        I(2,1) double = [1; 1];
+        J(2,1) double = [1; 1];
         c(2,1) double = [0.5; 0.5];
     end
 
@@ -40,9 +40,9 @@ classdef  rrarm < handle & basemodel
         end
 
         function mass_matrix = M(obj,~,x)
-            mass_matrix(1,1) = obj.m(1)*obj.c(1)^2 + obj.I(1) + obj.m(2)*(obj.l(1)^2 + obj.c(2)^2 + 2*obj.l(1)*obj.c(2)*cos(x(2))) + obj.I(2);
-            mass_matrix(2,2) = obj.m(2)*obj.c(2)^2 + obj.I(2);
-            mass_matrix(1,2) = obj.m(2)*obj.l(1)*obj.c(2)*cos(x(2)) + obj.m(2)*obj.c(2)^2 + obj.I(2);
+            mass_matrix(1,1) = obj.m(1)*obj.c(1)^2 + obj.J(1) + obj.m(2)*(obj.l(1)^2 + obj.c(2)^2 + 2*obj.l(1)*obj.c(2)*cos(x(2))) + obj.J(2);
+            mass_matrix(2,2) = obj.m(2)*obj.c(2)^2 + obj.J(2);
+            mass_matrix(1,2) = obj.m(2)*obj.l(1)*obj.c(2)*cos(x(2)) + obj.m(2)*obj.c(2)^2 + obj.J(2);
             mass_matrix(2,1) = mass_matrix(1,2);  
         end
 

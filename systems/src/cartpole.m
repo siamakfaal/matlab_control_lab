@@ -2,7 +2,7 @@ classdef  cartpole < handle & basemodel
     properties(Access=public)
         m(2,1) double = [1; 1]; % [cart mass, pole mass]
         l double = 1;      % Pole lenght
-        I double = 1;      % Pole inertia
+        J double = 1;      % Pole inertia
         c double = 0.5;    % Pole center of mass
     end
 
@@ -37,7 +37,7 @@ classdef  cartpole < handle & basemodel
 
         function mass_matrix = M(obj,~,x)
             mass_matrix(1,1) = obj.m(1) + obj.m(2);
-            mass_matrix(2,2) = obj.m(2)*obj.c^2 + obj.I;
+            mass_matrix(2,2) = obj.m(2)*obj.c^2 + obj.J;
             mass_matrix(1,2) = -obj.c*obj.m(2)*cos(x(2));
             mass_matrix(2,1) = mass_matrix(1,2);  
         end
