@@ -57,7 +57,7 @@ Other tools provided by the `simulator` are
 - `simulator.make_plot_axes()` creates an axes to plot time based trajectories or function values using `simulator` defaults and returnes the handle to the axes object.
     - `ax = simulator.make_plot_axes` creates a new axes based on the `simulator` object instantiation deafults.
     - `ax = simulator.make_plot_axes(ax)` sets `ax` properties to be the default properties of the `simulator` object instantiation.
-- `simulatormake_animation_axis()` creates an animation axes based on `simulator` defaults and returnes the handle to the axes object.
+- `simulator.make_animation_axis()` creates an animation axes based on `simulator` defaults and returnes the handle to the axes object.
     - `ax = simulatormake_animation_axis` builds a new axes in a new figure.
     - `ax = simulatormake_animation_axis(ax)` updates the properties of `ax` based on `simulator` defaults.
 
