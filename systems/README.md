@@ -160,15 +160,7 @@ $$
 \dot{\theta}\end{array}\right],
 $$
 
-where $\theta$ represents the angle measured from the vertical axis, moving counterclockwise, and $x$ is the distance from the origin in horizonatl direction.
-
-#### Equation of Motion
-The equation of motion for the system is given by:
-
-$$
-m l^2 \ddot{q} + b \dot{q} = u + m g l \sin(q),
-$$
-
+where $\theta$ represents the angle measured from the vertical axis, moving counterclockwise, and $x$ is the distance from the origin in the horizontal direction.
 
 #### State-Space Representation
 The state-space representation of the system can be expressed as:
@@ -178,22 +170,22 @@ $$
 \dot{x}_2\\
 \hline
 \dot{x}_3\\
-\dot{x}_4\end{array}\right] = \left[\begin{array} x_3 \\
+\dot{x}_4\end{array}\right] = \left[\begin{array}{c} x_3 \\
 x_4\\
 \hline
-{\bf M}^{-1}\left({\bf B}u - {\bf h}(\x) \right)\end{array}\right],
+{\bf M}^{-1}\left({\bf B}u - {\bf h}({\bf x}) \right)\end{array}\right],
 $$
 
 where
 
 $$
-{\bf M} = \begin{bmatrix}  m_1 + m_2 & -c m_2 \cos(\theta)\\
--c m_2 \cos(\theta) & m_2 c^2 + J\end{bmatrix},\quad {\bf h} = \begin{bmatrix} m_2 c \dot{theta}^2 \sin(\theta)\\
--m_2 g c \sin(\theta)\end{bmatrix},\quad\text{and}\quad {\bf B} = \begin{bmatrix} 1 \\
+{\bf M} = \begin{bmatrix}  m_1 + m_2 & -c ~ m_2 ~ \cos(x_2)\\
+-c ~ m_2 ~ \cos(x_2) & m_2 ~ c^2 + J\end{bmatrix}, \quad {\bf h}({\bf x}) = \begin{bmatrix} x_4^2\\
+-g \end{bmatrix} m_2 ~ c ~ \sin(x_2) ,\quad\text{and}\quad {\bf B} = \begin{bmatrix} 1 \\
 0 \end{bmatrix}
 $$
 
-where $m_1$ and $m_2$ denote the mass of the cart and the pole, respectively. The mass moment of inertia of the pole, with respect to the axis coinciding with the pole - cart connection point is denoted with $J$. The center of mass of the pole, measured from the joint axis is denoted by $c$ and $l$ denotes the total length of the pole (not utilized in derivations). For symbolic derivation of the equations of motion see [equation_of_motion/cartpole.m](https://github.com/siamakfaal/control_examples/blob/main/equations_of_motion/cartpole.m).
+In the above derivations, $m_1$ and $m_2$ denote the mass of the cart and the pole, respectively. The mass moment of inertia of the pole, with respect to the axis coinciding with the pole-cart connection point, is denoted by $J$. The center of mass of the pole, measured from the joint axis, is denoted by $c$. The total length of the pole, denoted by $l$, is not utilized in the derivations. For symbolic derivation of the equations of motion, see [equation_of_motion/cartpole.m](https://github.com/siamakfaal/control_examples/blob/main/equations_of_motion/cartpole.m).
 
 <img src="/systems/src/images/cartpole.png" alt="Cartpole Model" title="Cartpole Model" width="30%">
 
