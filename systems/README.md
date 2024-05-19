@@ -52,7 +52,7 @@ The `simulator` class provides tools to simulate and visualize the behavior of d
     - `simulator.animate(sol)` animates the system in a new figure and axes that is constructed based on class parameters and default values.
     - `simulator.animate(sol, ax)` uses `ax` as the animation axes.
 
-Othe tools provided by the `simulator` are
+Other tools provided by the `simulator` are
 - `simulator.eval(f, sol)` evaluates any function `f` in the form `f(t,x)` over every point of `sol.t` and `sol.x` and returens a matrix where each row is the output of `f` for the corresponding row of `sol.t` and `sol.x`.
 - `simulator.make_plot_axes()` creates an axes to plot time based trajectories or function values using `simulator` defaults and returnes the handle to the axes object.
     - `ax = simulator.make_plot_axes` creates a new axes based on the `simulator` object instantiation deafults.
@@ -173,16 +173,16 @@ $$
 \dot{x}_4\end{array}\right] = \left[\begin{array}{c} x_3 \\
 x_4\\
 \hline
-{\bf M}^{-1}\left({\bf B}u - {\bf h}({\bf x}) \right)\end{array}\right],
+{\bf M}^{-1}\left({\bf B}u - {\bf h} \right)\end{array}\right],
 $$
 
 where
 
 $$
-{\bf M} = \begin{bmatrix}  m_1 + m_2 & -c ~ m_2 ~ \cos(x_2)\\
+{\bf M}({\bf x}) = \begin{bmatrix}  m_1 + m_2 & -c ~ m_2 ~ \cos(x_2)\\
 -c ~ m_2 ~ \cos(x_2) & m_2 ~ c^2 + J\end{bmatrix}, \quad {\bf h}({\bf x}) = \begin{bmatrix} x_4^2\\
 -g \end{bmatrix} m_2 ~ c ~ \sin(x_2) ,\quad\text{and}\quad {\bf B} = \begin{bmatrix} 1 \\
-0 \end{bmatrix}
+0 \end{bmatrix}.
 $$
 
 In the above derivations, $m_1$ and $m_2$ denote the mass of the cart and the pole, respectively. The mass moment of inertia of the pole, with respect to the axis coinciding with the pole-cart connection point, is denoted by $J$. The center of mass of the pole, measured from the joint axis, is denoted by $c$. The total length of the pole, denoted by $l$, is not utilized in the derivations. For symbolic derivation of the equations of motion, see [equation_of_motion/cartpole.m](https://github.com/siamakfaal/control_examples/blob/main/equations_of_motion/cartpole.m).
