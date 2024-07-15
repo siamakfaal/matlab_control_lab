@@ -1,4 +1,4 @@
-# Control Examples
+# MATLAB Control Lab
 
 This repository serves as a collection of examples in control theory, particularly focusing on applications in robotic and mechanical systems. It is intended as a resource for learning and experimentation.
 
